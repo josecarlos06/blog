@@ -1,0 +1,59 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.propiedades{
+    padding-top:10rem;
+    &__heading{
+        font-weight:400;
+        span{
+            font-weight:bold;
+        }
+        &::after{
+            content: '';
+            display: block;
+            height:.9rem;
+            width:10rem;
+            margin-top:1rem;
+            background:linear-gradient(to right, v.$primario 50%, v.$negro 100%);
+        }
+    }
+    &__grid{
+        @include m.grid(1,2rem);
+        @include m.tablet{
+            @include m.grid(3,2rem);
+        }
+    }
+}
+
+.propiedad{
+    background:v.$blanco;
+    @for $i from 1 through 6 {
+        $imagen:'../img/propiedad_' + $i + '.jpg';
+        &:nth-child(#{$i}) &__img{
+            background:linear-gradient(rgb(0 0 0/.50) 0% , rgb(0 0 0/.50) 100% ),url($imagen);
+            background-repeat: no-repeat;
+            background-position:center;
+            background-size: cover;
+        }
+    }
+    &__img{
+        aspect-ratio:10/6;
+        display:flex;
+        align-items: flex-end;
+        padding:1rem;
+    }
+    &__nombre{
+        color:v.$blanco;
+    }
+    &__contenido{
+        padding:1rem;
+    }
+    &__precio{
+        font-size:2rem;
+        font-weight:600;
+    }
+    &__enlance{
+        @include m.boton(v.$primario,v.$blanco);
+        display:block;
+    }
+}

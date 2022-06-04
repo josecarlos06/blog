@@ -1,0 +1,78 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.header{
+    background:linear-gradient(to right, transparentize(v.$primario, .15) 0%, transparentize(v.$primario, .15) 100%),url(../img/header_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    @include m.tablet{
+        padding:0 0 15rem 0;
+    }
+    &__barra{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        align-items: center;
+        padding-top:2rem;
+        @include m.tablet{
+            flex-direction:row;
+        }
+    }
+    &__logo{
+        width:20rem;
+    }
+    &__contenido{
+        @include m.tablet{
+            max-width:50rem;
+        }
+    }
+    &__heading{
+        color: v.$blanco;
+        text-align: center;
+        padding:5rem 0;
+        margin: 0;
+        @include m.tablet{
+            text-align: left;
+            padding-bottom: 0;
+        }
+    }
+    &__texto{
+        color: v.$blanco;
+        display:none;
+        @include m.tablet{
+            display: block;
+        }
+    }
+    &__img{
+        display: none;
+        @include m.tablet{
+            display: block;
+            position: absolute;
+            max-width:28rem;
+            max-height:28rem;
+            right:0;
+            bottom:-5rem;
+            border-radius:.5rem 0rem 0 4rem;
+        }
+        @include m.desktop{
+            max-width:45rem;
+        }
+    }
+
+}
+.navegacion{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    padding-top:2rem;
+    @include m.tablet{
+        flex-direction: row;
+        padding-top: 0;
+    }
+    &__link{
+        color: v.$blanco;
+        font-size:1.7rem;
+    }
+}
